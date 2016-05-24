@@ -9,10 +9,6 @@ import android.provider.Settings.Secure;
  */
 public class MessageSender {
 
-    public static final String ACTION_MESSAGE = "com.sogeti.messenger.ACTION_MESSAGE";
-    public static final String BUNDLE_MESSAGE_SENDER = "com.sogeti.messenger.BUNDLE_MESSAGE_SENDER";
-    public static final String BUNDLE_MESSAGE_CONTENT = "com.sogeti.messenger.BUNDLE_MESSAGE_CONTENT";
-
     private final String message;
     private final Context context;
 
@@ -22,9 +18,9 @@ public class MessageSender {
     }
 
     public void send() {
-        Intent sendIntent = new Intent(ACTION_MESSAGE);
-        sendIntent.putExtra(BUNDLE_MESSAGE_CONTENT, message);
-        sendIntent.putExtra(BUNDLE_MESSAGE_SENDER, getDeviceId());
+        Intent sendIntent = new Intent(MessagingConstants.ACTION_MESSAGE);
+        sendIntent.putExtra(MessagingConstants.BUNDLE_MESSAGE_CONTENT, message);
+        sendIntent.putExtra(MessagingConstants.BUNDLE_MESSAGE_SENDER, getDeviceId());
         context.sendBroadcast(sendIntent);
     }
 
