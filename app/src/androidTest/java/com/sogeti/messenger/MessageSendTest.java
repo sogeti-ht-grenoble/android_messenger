@@ -54,11 +54,11 @@ public class MessageSendTest
             @Override
             public void onReceive(Context arg0, Intent intent) {
                 // Assert
-                assertThat(intent.hasExtra(MessageSender.BUNDLE_MESSAGE_SENDER),
+                assertThat(intent.hasExtra(MessagingConstants.BUNDLE_MESSAGE_SENDER),
                         equalTo(true));
-                mTextSent = intent.getStringExtra(MessageSender.BUNDLE_MESSAGE_CONTENT);
+                mTextSent = intent.getStringExtra(MessagingConstants.BUNDLE_MESSAGE_CONTENT);
             }
-        }, new IntentFilter(MessageSender.ACTION_MESSAGE));
+        }, new IntentFilter(MessagingConstants.ACTION_MESSAGE));
 
         onView(withId(R.id.home_input))
                 .perform(typeText(mTextToSend), closeSoftKeyboard());
